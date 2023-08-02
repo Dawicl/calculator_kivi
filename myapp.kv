@@ -1,0 +1,208 @@
+<Button>
+    font_size: 28
+
+<main_window>
+    do_default_tab: False
+    TabbedPanelItem:
+        text: "Main"
+        BoxLayout:
+            spacing: 5
+            orientation: "vertical"
+            size: root.width, root.height
+            TextInput:
+                id: ramka_1
+                text: "0"
+                size_hint: 1, 0.3
+                halign: "right"
+                font_size: 38
+            
+            GridLayout:
+                cols: 4
+                spacing: 5
+
+                Button:
+                    text: "C"
+                    on_press: root.czysc()
+                
+                Button:
+                    text: "<<"
+                    on_press: root.backspace()
+
+                Button:
+                    text: "x2"
+                    on_press: root.kwadrat()
+                    
+                Button:
+                    text: "sqrt"
+                    on_press: root.pierwiastkuj()
+
+                Button:
+                    text: "7"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(7)
+                Button:
+                    text: "8"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(8)
+                Button:
+                    text: "9"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(9)
+                Button:
+                    text: "*"
+                    on_press: root.press_digit("*")
+                Button:
+                    text: "4"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(4)
+                Button:
+                    text: "5"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(5)
+                Button:
+                    text: "6"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(6)
+                Button:
+                    text: "/"
+                    on_press: root.press_digit("/")
+                Button:
+                    text: "1"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(1)
+                Button:
+                    text: "2"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(2)
+                Button:
+                    text: "3"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(3)
+                Button:
+                    text: "+"
+                    on_press: root.press_digit("+")
+                Button:
+                    text: ","
+                    on_press: root.press_digit(".")
+                Button:
+                    text: "0"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(0)
+                Button:
+                    text: "="
+                    background_normal: ''
+                    background_color: (0, 0, 1, 1)
+                    on_press: root.count()
+                Button: 
+                    text: "-"
+                    on_press: root.press_digit("-")
+    TabbedPanelItem:
+        text: "Tryg"
+        BoxLayout:
+            spacing: 5
+            orientation: "vertical"
+            size: root.width, root.height
+            TextInput:
+                id: ramka_2
+                text: "0"
+                size_hint: 1, 0.3
+                halign: "right"
+                font_size: 38
+            
+            GridLayout:
+                cols: 4
+                spacing: 5
+
+                Button:
+                    text: "C"
+                    on_press: root.czysc()
+                
+                Button:
+                    text: "<<"
+                    on_press: root.backspace()
+
+                Button:
+                    text: "arc sin"
+                    on_press: root.arcus_sinus()
+                    
+                Button:
+                    text: "arc cos"
+                    on_press: root.arcus_cosinus()
+
+                Button:
+                    text: "7"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(7)
+                Button:
+                    text: "8"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(8)
+                Button:
+                    text: "9"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(9)
+                Button:
+                    text: "sin"
+                    on_press: root.sinus()
+                Button:
+                    text: "4"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(4)
+                Button:
+                    text: "5"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(5)
+                Button:
+                    text: "6"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(6)
+                Button:
+                    text: "cos"
+                    on_press: root.cosinus()
+                Button:
+                    text: "1"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(1)
+                Button:
+                    text: "2"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(2)
+                Button:
+                    text: "3"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(3)
+                Button:
+                    text: "tg"
+                    on_press: root.tangens()
+                Button:
+                    text: ","
+                    on_press: root.press_digit(".")
+                Button:
+                    text: "0"
+                    background_normal: ''
+                    background_color: (0.2, 0.2, 0.2, 1)
+                    on_press: root.press_digit(0)
+                Switch:
+                    active: True
+                Button: 
+                    text: "ctg"
+                    on_press: root.cotangens()
