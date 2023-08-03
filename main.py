@@ -6,30 +6,36 @@ from math import pi, sin, cos, tan, asin, acos
 
 
 
-Builder.load_file('myapp.kv')
+Builder.load_file('app.kv')
 class main_window(TabbedPanel):   
     def czysc(self):
         self.ids.ramka_1.text = '0'
         self.ids.ramka_2.text = '0'
+        self.ids.ramka_3.text = '0'
 
     def backspace(self):
         self.ids.ramka_1.text = self.ids.ramka_1.text[:-1]
         self.ids.ramka_2.text = self.ids.ramka_2.text[:-1]
+        self.ids.ramka_3.text = self.ids.ramka_3.text[:-1]
  
     def press_digit(self, znak):
-        numbers = ("0","1","2")
-        marks = ("+","-","/","*")
-        if self.ids.ramka_1.text == "0":
+        marks = ("+","-","/","*",".")
+        if self.ids.ramka_1.text == "0" and str(znak) != ".":
             self.ids.ramka_1.text = str(znak)
-        elif self.ids.ramka_1.text[-1] == numbers and self.ids.ramka_1.text[-1] != marks:
-            self.ids.ramka_1.text += str(znak)
-        elif self.ids.ramka_1.text[-1] == marks:
-            self.ids.ramka_1.text += ""  
+        elif self.ids.ramka_1.text[-1] in marks and znak in marks:
+            pass
+        else:
+            self.ids.ramka_1.text += str(znak) 
 
         if self.ids.ramka_2.text == "0":
             self.ids.ramka_2.text = str(znak)
         else:
             self.ids.ramka_2.text += str(znak)
+
+        if self.ids.ramka_3.text == "0":
+            self.ids.ramka_3.text = str(znak)
+        else:
+            self.ids.ramka_3.text += str(znak)
 
     def count(self):
         dzialanie = self.ids.ramka_1.text
@@ -39,8 +45,8 @@ class main_window(TabbedPanel):
     def pierwiastkuj(self):
         liczba = int(self.ids.ramka_1.text)
         wynik = str(liczba**(1/2))
-        wynik_lista = wynik.split(".")  #2.0
-        if wynik_lista[1] != "0":
+        wynik_lista = wynik.split(".")
+        if wynik_lista[1] != "":
             self.ids.ramka_1.text = wynik
         else:
             self.ids.ramka_1.text = wynik_lista[0] 
@@ -96,7 +102,7 @@ class main_window(TabbedPanel):
     def arcus_cosinus(self):
         dzialanie_acos = self.ids.ramka_2.text
         dzialanie_acos = float(dzialanie_acos)
-        wynik_acos = asin(dzialanie_acos)
+        wynik_acos = acos(dzialanie_acos)
         wynik_acos = wynik_acos * 180 / pi
         wynik_acos = round(wynik_acos)
         wynik_acos = str(wynik_acos)
