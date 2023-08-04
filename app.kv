@@ -29,12 +29,12 @@
                     on_press: root.backspace()
 
                 Button:
-                    text: "x2"
-                    on_press: root.kwadrat()
+                    text: "("
+                    on_press: root.press_digit("(")
                     
                 Button:
-                    text: "sqrt"
-                    on_press: root.pierwiastkuj()
+                    text: ")"
+                    on_press: root.press_digit(")")
 
                 Button:
                     text: "7"
@@ -246,11 +246,11 @@
                     on_press: root.backspace()
 
                 Button:
-                    text: "x2"
-                    on_press: root.kwadrat()
+                    text: "("
+                    on_press: root.press_digit("(")
                     
                 Button:
-                    text: "sqrt"
+                    text: ")"
                     on_press: root.pierwiastkuj()
 
                 Button:
@@ -269,8 +269,8 @@
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(9)
                 Button:
-                    text: "*"
-                    on_press: root.press_digit("*")
+                    text: "x2"
+                    on_press: root.kwadrat()
                 Button:
                     text: "4"
                     background_normal: ''
@@ -287,8 +287,8 @@
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(6)
                 Button:
-                    text: "/"
-                    on_press: root.press_digit("/")
+                    text: "sqrt"
+                    on_press: root.pierwiastkuj()
                 Button:
                     text: "1"
                     background_normal: ''

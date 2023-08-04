@@ -37,6 +37,11 @@ class main_window(TabbedPanel):
         else:
             self.ids.ramka_3.text += str(znak)
 
+        if self.ids.ramka_4.text == "0":
+            self.ids.ramka_4.text = str(znak)
+        else:
+            self.ids.ramka_4.text += str(znak)
+
     def count(self):
         dzialanie = self.ids.ramka_1.text
         wynik = eval(dzialanie)
