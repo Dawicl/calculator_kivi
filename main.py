@@ -2,7 +2,8 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang.builder import Builder
 from kivy.uix.tabbedpanel import TabbedPanel
-from math import pi, sin, cos, tan, asin, acos
+from math import pi, sin, cos, tan, asin, acos, log
+import math
 
 
 
@@ -37,28 +38,23 @@ class main_window(TabbedPanel):
         else:
             self.ids.ramka_3.text += str(znak)
 
-        if self.ids.ramka_4.text == "0":
-            self.ids.ramka_4.text = str(znak)
-        else:
-            self.ids.ramka_4.text += str(znak)
-
     def count(self):
         dzialanie = self.ids.ramka_1.text
         wynik = eval(dzialanie)
         self.ids.ramka_1.text = str(wynik)
 
     def pierwiastkuj(self):
-        liczba = int(self.ids.ramka_1.text)
+        liczba = float(self.ids.ramka_3.text)
         wynik = str(liczba**(1/2))
         wynik_lista = wynik.split(".")
         if wynik_lista[1] != "":
-            self.ids.ramka_1.text = wynik
+            self.ids.ramka_3.text = wynik
         else:
-            self.ids.ramka_1.text = wynik_lista[0] 
+            self.ids.ramka_3.text = wynik_lista[0] 
 
     def kwadrat(self):
-        liczba = int(self.ids.ramka_1.text)
-        self.ids.ramka_1.text = str(liczba**2)
+        liczba = float(self.ids.ramka_3.text)
+        self.ids.ramka_3.text = str(liczba**2)
     
     def sinus(self):
         dzialanie_sin = self.ids.ramka_2.text
@@ -112,6 +108,54 @@ class main_window(TabbedPanel):
         wynik_acos = round(wynik_acos)
         wynik_acos = str(wynik_acos)
         self.ids.ramka_2.text = wynik_acos
+
+    def spinner_clicked(self, value):
+        value = self.ids.spinner_id.text
+        if value == "°":
+            self.ids.ramka_2.text = "dziala"
+        if value == "π":
+            liczba = self.ids.ramka_2.text
+            liczba = float(liczba)
+            wynik = liczba * 180 / pi
+            wynik = str(wynik)
+            self.ids.ramka_2.text = wynik
+
+
+    def logarytm_2(self):
+        liczba_1 = self.ids.ramka_3.text
+        liczba_1 = float(liczba_1)
+        wynik_log2 = log(liczba_1, 2)
+        wynik_log2 = str(wynik_log2)
+        self.ids.ramka_3.text = wynik_log2
+
+    def logarytm_3(self):
+        liczba_1 = self.ids.ramka_3.text
+        liczba_1 = float(liczba_1)
+        wynik_log3 = log(liczba_1, 3)
+        wynik_log3 = str(wynik_log3)
+        self.ids.ramka_3.text = wynik_log3
+
+    def logarytm_5(self):
+        liczba_1 = self.ids.ramka_3.text
+        liczba_1 = float(liczba_1)
+        wynik_log5 = log(liczba_1, 5)
+        wynik_log5 = str(wynik_log5)
+        self.ids.ramka_3.text = wynik_log5
+
+    def logarytm_10 (self):
+        liczba_1 = self.ids.ramka_3.text
+        liczba_1 = float(liczba_1)
+        wynik_log10 = log(liczba_1, 10)
+        wynik_log10 = str(wynik_log10)
+        self.ids.ramka_3.text = wynik_log10
+
+    def logarytm_e (self):
+        liczba_1 = self.ids.ramka_3.text
+        liczba_1 = float(liczba_1)
+        wynik_log = log(liczba_1, math.e)
+        wynik_log = str(wynik_log)
+        self.ids.ramka_3.text = wynik_log
+
 
 class MyApp(App):
     def build(self):

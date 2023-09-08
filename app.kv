@@ -202,11 +202,11 @@
                     background_normal: ''
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(0)
-                Switch:
-                    active: True
-                    text: "pi"
-                    active_text: "pi"
-                    inactive_text: "o"
+                Spinner:
+                    id: spinner_id
+                    text: "°"
+                    values: "π", "°"
+                    on_text: root.spinner_clicked(spinner_id.text)
                 Button:
                     text: "ctg"
                     on_press: root.cotangens()
@@ -216,22 +216,12 @@
             spacing: 5
             orientation: "vertical"
             size: root.width, root.height
-            GridLayout:
-                cols: 2
-                spacing: 5
+            TextInput:
+                id: ramka_3
+                text: "0"
                 size_hint: 1, 0.3
-                TextInput:
-                    id: ramka_3
-                    hint_text: "podstawa logarytmu"
-                    size_hint: 1, 0.3
-                    halign: "right"
-                    font_size: 28
-                TextInput:
-                    id: ramka_4
-                    hint_text: "liczba logarytmowana"
-                    size_hint: 1, 0.3
-                    halign: "right"
-                    font_size: 28
+                halign: "right"
+                font_size: 38
             
             GridLayout:
                 cols: 4
@@ -246,12 +236,12 @@
                     on_press: root.backspace()
 
                 Button:
-                    text: "("
-                    on_press: root.press_digit("(")
+                    text: "x²"
+                    on_press: root.kwadrat()
                     
                 Button:
-                    text: ")"
-                    on_press: root.pierwiastkuj()
+                    text: "log"
+                    on_press: root.logarytm_e()
 
                 Button:
                     text: "7"
@@ -269,8 +259,8 @@
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(9)
                 Button:
-                    text: "x2"
-                    on_press: root.kwadrat()
+                    text: "log2"
+                    on_press: root.logarytm_2()
                 Button:
                     text: "4"
                     background_normal: ''
@@ -287,8 +277,8 @@
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(6)
                 Button:
-                    text: "sqrt"
-                    on_press: root.pierwiastkuj()
+                    text: "log3"
+                    on_press: root.logarytm_3()
                 Button:
                     text: "1"
                     background_normal: ''
@@ -305,22 +295,19 @@
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(3)
                 Button:
-                    text: "+"
-                    on_press: root.press_digit("+")
+                    text: "log5"
+                    on_press: root.logarytm_5()
                 Button:
                     text: ","
                     on_press: root.press_digit(".")
                 Button:
                     text: "0"
-                    id: zero
                     background_normal: ''
                     background_color: (0.2, 0.2, 0.2, 1)
                     on_press: root.press_digit(0)
-                Button:
-                    text: "="
-                    background_normal: ''
-                    background_color: (0, 0, 1, 1)
-                    on_press: root.count()
                 Button: 
-                    text: "-"
-                    on_press: root.press_digit("-")
+                    text: "sqrt"
+                    on_press: root.pierwiastkuj()
+                Button: 
+                    text: "log10"
+                    on_press: root.logarytm_10()
