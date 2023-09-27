@@ -1,10 +1,9 @@
 from kivy.app import App
-from kivy.uix.widget import Widget
 from kivy.lang.builder import Builder
 from kivy.uix.tabbedpanel import TabbedPanel
-from math import pi, sin, cos, tan, asin, acos, log
-import math
+from math import pi, sin, cos, tan, asin, acos, log, e
 
+is_deegris = True
 
 
 Builder.load_file('app.kv')
@@ -15,28 +14,46 @@ class main_window(TabbedPanel):
         self.ids.ramka_3.text = '0'
 
     def backspace(self):
-        self.ids.ramka_1.text = self.ids.ramka_1.text[:-1]
-        self.ids.ramka_2.text = self.ids.ramka_2.text[:-1]
-        self.ids.ramka_3.text = self.ids.ramka_3.text[:-1]
+        if len(self.ids.ramka_1.text) == 1:
+            self.ids.ramka_1.text = '0'
+            self.ids.ramka_2.text = '0'
+            self.ids.ramka_3.text = '0'
+        else:
+            self.ids.ramka_1.text = self.ids.ramka_1.text[:-1]
+            self.ids.ramka_2.text = self.ids.ramka_2.text[:-1]
+            self.ids.ramka_3.text = self.ids.ramka_3.text[:-1]
  
     def press_digit(self, znak):
         marks = ("+","-","/","*",".")
-        if self.ids.ramka_1.text == "0" and str(znak) != ".":
-            self.ids.ramka_1.text = str(znak)
-        elif self.ids.ramka_1.text[-1] in marks and znak in marks:
-            pass
-        else:
-            self.ids.ramka_1.text += str(znak) 
+        try:
+            if self.ids.ramka_1.text == "0" and str(znak) != ".":
+                self.ids.ramka_1.text = str(znak)
+            elif self.ids.ramka_1.text[-1] in marks and znak in marks:
+                pass
+            else:
+                self.ids.ramka_1.text += str(znak)
+        except IndexError:
+            pass 
 
-        if self.ids.ramka_2.text == "0":
-            self.ids.ramka_2.text = str(znak)
-        else:
-            self.ids.ramka_2.text += str(znak)
+        try:
+            if self.ids.ramka_2.text == "0" and str(znak) != ".":
+                self.ids.ramka_2.text = str(znak)
+            elif self.ids.ramka_2.text[-1] in marks and znak in marks:
+                pass
+            else:
+                self.ids.ramka_2.text += str(znak)
+        except IndexError:
+            pass 
 
-        if self.ids.ramka_3.text == "0":
-            self.ids.ramka_3.text = str(znak)
-        else:
-            self.ids.ramka_3.text += str(znak)
+        try:
+            if self.ids.ramka_3.text == "0" and str(znak) != ".":
+                self.ids.ramka_3.text = str(znak)
+            elif self.ids.ramka_3.text[-1] in marks and znak in marks:
+                pass
+            else:
+                self.ids.ramka_3.text += str(znak)
+        except IndexError:
+            pass 
 
     def count(self):
         dzialanie = self.ids.ramka_1.text
@@ -59,7 +76,8 @@ class main_window(TabbedPanel):
     def sinus(self):
         dzialanie_sin = self.ids.ramka_2.text
         dzialanie_sin = float(dzialanie_sin)
-        dzialanie_sin = dzialanie_sin * pi / 180
+        if is_deegris == True:
+            dzialanie_sin = dzialanie_sin * pi / 180
         wynik_sin = sin(dzialanie_sin)
         wynik_sin = str(wynik_sin)
         self.ids.ramka_2.text = wynik_sin
@@ -67,7 +85,8 @@ class main_window(TabbedPanel):
     def cosinus(self):
         dzialanie_cos = self.ids.ramka_2.text
         dzialanie_cos = float(dzialanie_cos)
-        dzialanie_cos = dzialanie_cos * pi / 180
+        if is_deegris == True:
+            dzialanie_cos = dzialanie_cos * pi / 180
         wynik_cos = cos(dzialanie_cos)
         wynik_cos = round(wynik_cos, 2)
         wynik_cos = str(wynik_cos)
@@ -76,7 +95,8 @@ class main_window(TabbedPanel):
     def tangens(self):
         dzialanie_tan = self.ids.ramka_2.text
         dzialanie_tan = float(dzialanie_tan)
-        dzialanie_tan = dzialanie_tan * pi / 180
+        if is_deegris == True:
+            dzialanie_tan = dzialanie_tan * pi / 180
         wynik_tan = tan(dzialanie_tan)
         wynik_tan = round(wynik_tan, 2)
         wynik_tan = str(wynik_tan)
@@ -85,7 +105,8 @@ class main_window(TabbedPanel):
     def cotangens(self):
         dzialane_cot = self.ids.ramka_2.text
         dzialane_cot = float(dzialane_cot)
-        dzialane_cot = dzialane_cot * pi / 180
+        if is_deegris == True:
+            dzialane_cot = dzialane_cot * pi / 180
         wynik_cot = 1 / (tan(dzialane_cot))
         wynik_cot = round(wynik_cot, 2)
         wynik_cot = str(wynik_cot)
@@ -94,9 +115,11 @@ class main_window(TabbedPanel):
     def arcus_sinus(self):
         dzialanie_asin = self.ids.ramka_2.text
         dzialanie_asin = float(dzialanie_asin)
+        print(dzialanie_asin)
         wynik_asin = asin(dzialanie_asin)
-        wynik_asin = wynik_asin * 180 / pi
-        wynik_asin = round(wynik_asin)
+        if is_deegris == True:
+            wynik_asin = wynik_asin * 180 / pi
+        wynik_asin = round(wynik_asin, 2)
         wynik_asin = str(wynik_asin)
         self.ids.ramka_2.text = wynik_asin
 
@@ -104,21 +127,19 @@ class main_window(TabbedPanel):
         dzialanie_acos = self.ids.ramka_2.text
         dzialanie_acos = float(dzialanie_acos)
         wynik_acos = acos(dzialanie_acos)
-        wynik_acos = wynik_acos * 180 / pi
-        wynik_acos = round(wynik_acos)
+        if is_deegris == True:
+            wynik_acos = wynik_acos * 180 / pi
+        wynik_acos = round(wynik_acos, 2)
         wynik_acos = str(wynik_acos)
         self.ids.ramka_2.text = wynik_acos
 
     def spinner_clicked(self, value):
+        global is_deegris
         value = self.ids.spinner_id.text
         if value == "°":
-            self.ids.ramka_2.text = "dziala"
+            is_deegris = True
         if value == "π":
-            liczba = self.ids.ramka_2.text
-            liczba = float(liczba)
-            wynik = liczba * 180 / pi
-            wynik = str(wynik)
-            self.ids.ramka_2.text = wynik
+            is_deegris = False
 
 
     def logarytm_2(self):
@@ -152,7 +173,7 @@ class main_window(TabbedPanel):
     def logarytm_e (self):
         liczba_1 = self.ids.ramka_3.text
         liczba_1 = float(liczba_1)
-        wynik_log = log(liczba_1, math.e)
+        wynik_log = log(liczba_1, e)
         wynik_log = str(wynik_log)
         self.ids.ramka_3.text = wynik_log
 
